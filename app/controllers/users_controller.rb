@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if user.save
       render json: user, status: :created, meta: default_meta
     else
-      render_error(user, :unprocessable_entity)
+      render json: user.errors
     end
   end
 
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       render json: @user, status: :ok, meta: default_meta
     else
-      render_error(@user, :unprocessable_entity)
+      render json: @user.errors
     end
   end
 

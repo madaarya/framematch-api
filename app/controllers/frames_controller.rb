@@ -17,7 +17,7 @@ class FramesController < ApplicationController
     if frame.save
       render json: frame, status: :created, meta: default_meta
     else
-      render_error(frame, :unprocessable_entity)
+      render json: frame.errors
     end
   end
 
@@ -25,7 +25,7 @@ class FramesController < ApplicationController
     if @frame.update_attributes(frame_params)
       render json: @frame, status: :ok, meta: default_meta
     else
-      render_error(@frame, :unprocessable_entity)
+      render json: @frame.errors
     end
   end
 
