@@ -26,7 +26,7 @@ class ApplicationController < ActionController::API
     return unless token
     user = User.find_by token: token
     return unless user
-    if 15.minutes.ago < user.updated_at
+    if 2.hours.ago < user.updated_at
       user.touch
       @current_user = user
     end

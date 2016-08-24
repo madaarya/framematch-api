@@ -14,6 +14,7 @@ class FramesController < ApplicationController
 
   def create
     frame = Frame.new(frame_params)
+    frame.user_id = @current_user.id
     if frame.save
       render json: frame, status: :created, meta: default_meta
     else
@@ -47,6 +48,6 @@ class FramesController < ApplicationController
   end
 
   def frame_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params)
+    params.require(:frame).permit(:title, :frame)
   end
 end
