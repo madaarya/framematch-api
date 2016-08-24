@@ -1,0 +1,29 @@
+
+development:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: framematch_development
+  pool:     5
+  username: madaarya
+
+
+test:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: framematch_test
+  pool:     5
+  username: madaarya
+  password: 
+  template: template0
+
+production:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: framematch_production
+  pool:     5
+  username: madaarya
+  password: 
+  template: template0
