@@ -1,3 +1,11 @@
+set :application, 'framematch'
+set :repo_url, 'git@github.com:41studio/framematch-api.git'
+
+set :use_sudo, false
+set :deploy_to, "/home/railsdev/framematch_staging"
+set :branch, "master"
+set :rails_env, "production"
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -59,3 +67,16 @@
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
+
+
+server '188.166.246.213',
+  user: 'railsdev',
+  port: 55,
+  roles: %w{web app db},
+  ssh_options: {
+    user: 'railsdev', # overrides user setting above
+    keys: %w(/Users/madaarya/.ssh/id_rsa),
+    forward_agent: true,
+    auth_methods: %w(publickey password)
+    # password: 'please use keys'
+  }
