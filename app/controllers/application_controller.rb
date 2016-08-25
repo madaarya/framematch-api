@@ -32,6 +32,10 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def render_error(resource, status)
+    render json: resource, status: status, adapter: :json_api, serializer: ActiveModel::Serializer::ErrorSerializer, meta: default_meta
+  end
+
   def validate_user
     head 403 and return unless @current_user
   end
