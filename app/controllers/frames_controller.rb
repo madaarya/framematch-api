@@ -5,11 +5,11 @@ class FramesController < ApplicationController
 
   def index
     frames = @current_user.frames
-    render json: frames, meta: default_meta
+    render json: frames, width_screen: request.headers["X-Image-Width"], height_size: request.headers["X-Image-Height"], meta: default_meta
   end
 
   def show
-    render json: @frame, meta: default_meta
+    render json: @frame, width_screen: request.headers["X-Image-Width"], height_size: request.headers["X-Image-Height"], meta: default_meta
   end
 
   def create

@@ -3,11 +3,6 @@ class UsersController < ApplicationController
   before_action :validate_user, only: [:update, :destroy]
   before_action :validate_type, only: [:create, :update]
 
-  def index
-    users = User.all
-    render json: users, meta: default_meta
-  end
-
   def show
     render json: @user, meta: default_meta
   end
@@ -27,11 +22,6 @@ class UsersController < ApplicationController
     else
       render json: @user.errors
     end
-  end
-
-  def destroy
-    @user.destroy
-    head 204
   end
 
   private
