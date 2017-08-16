@@ -1,7 +1,7 @@
 class FramesController < ApplicationController
-  before_action :set_frame, only: [:show, :update, :destroy]
-  before_action :validate_user, only: [:create, :update, :destroy, :index]
-  skip_before_action :check_header, only: [:create, :update]
+  before_action :set_frame, only: [:show, :destroy]
+  before_action :validate_user, only: [:create, :destroy, :index]
+  skip_before_action :check_header, only: :create
 
   def index
     frames = @current_user.frames
@@ -19,14 +19,6 @@ class FramesController < ApplicationController
       render json: frame, status: :created, meta: default_meta
     else
       render json: frame.errors
-    end
-  end
-
-  def update
-    if @frame.update_attributes(frame_params)
-      render json: @frame, status: :ok, meta: default_meta
-    else
-      render json: @frame.errors
     end
   end
 

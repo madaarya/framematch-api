@@ -1,7 +1,7 @@
 class PropsController < ApplicationController
-  before_action :set_prop, only: [:show, :update, :destroy]
-  before_action :validate_user, only: [:create, :update, :destroy, :index]
-  skip_before_action :check_header, only: [:create, :update]
+  before_action :set_prop, only: [:show, :destroy]
+  before_action :validate_user, only: [:create, :destroy, :index]
+  skip_before_action :check_header, only: :create
 
   def index
     props = @current_user.props
@@ -19,14 +19,6 @@ class PropsController < ApplicationController
       render json: prop, status: :created, meta: default_meta
     else
       render json: prop.errors
-    end
-  end
-
-  def update
-    if @prop.update_attributes(prop_params)
-      render json: @prop, status: :ok, meta: default_meta
-    else
-      render json: @prop.errors
     end
   end
 

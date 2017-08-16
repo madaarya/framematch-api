@@ -1,10 +1,4 @@
-set :application, 'framematch'
-set :repo_url, 'git@github.com:41studio/framematch-api.git'
 
-set :use_sudo, false
-set :deploy_to, "/home/railsdev/framematch_staging"
-set :branch, "master"
-set :rails_env, "production"
 
 # server-based syntax
 # ======================
